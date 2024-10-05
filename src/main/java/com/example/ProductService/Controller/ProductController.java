@@ -1,6 +1,7 @@
 package com.example.ProductService.Controller;
 import com.example.ProductService.DTO.ProductRequest;
 import com.example.ProductService.DTO.ProductResponse;
+import com.example.ProductService.Model.Product;
 import com.example.ProductService.Service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,4 +32,12 @@ public class ProductController {
     @DeleteMapping
     @ResponseStatus(HttpStatus.OK)
     public void deleteAllProducts() { this.productService.deleteAllProducts();}
+
+
+    @GetMapping("/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    public ProductResponse getProduct(@PathVariable("name") String skuCode)
+    {
+        return this.productService.getProduct(skuCode);
+    }
 }

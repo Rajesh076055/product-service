@@ -40,6 +40,11 @@ public class ProductService {
         this.productRepository.deleteAll();
     }
 
+    public ProductResponse getProduct(String skuCode) {
+        Product product =  this.productRepository.findByName(skuCode);
+        return mapToProductResponse(product);
+    }
+
     private ProductResponse mapToProductResponse(Product product) {
         return ProductResponse.builder()
 //                .id(product.getId())
@@ -48,4 +53,6 @@ public class ProductService {
                 .price(product.getPrice())
                 .build();
     }
+
+
 }
